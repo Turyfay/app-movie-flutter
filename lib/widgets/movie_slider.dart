@@ -9,8 +9,7 @@ class MovieSliderScreen extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      color: Colors.red,
-      height: size.height * 0.3,
+      height: size.height * 0.33,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -24,7 +23,7 @@ class MovieSliderScreen extends StatelessWidget {
           Expanded(
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 10,
+                itemCount: 20,
                 itemBuilder: (BuildContext context, int index) =>
                     const _MoviePoster()),
           ),
@@ -41,12 +40,34 @@ class _MoviePoster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      child: Container(
-        height: 100,
-        width: 150,
-        color: Colors.blue,
-        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+    return Container(
+      height: 100,
+      width: 150,
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, 'details');
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: const FadeInImage(
+                  width: 150,
+                  height: 200,
+                  fit: BoxFit.cover,
+                  placeholder: AssetImage('assets/img/no-image.jpg'),
+                  image: NetworkImage('https://picsum.photos/id/1/300/400')),
+            ),
+          ),
+          const SizedBox(height: 5),
+          const Text(
+            'star wars',
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }
