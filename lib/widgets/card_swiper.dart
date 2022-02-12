@@ -19,7 +19,8 @@ class CardSwiperScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, 'details');
+              Navigator.pushNamed(context, 'details',
+                  arguments: 'movie-instance');
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
