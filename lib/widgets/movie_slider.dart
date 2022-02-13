@@ -1,31 +1,41 @@
+import 'package:app_movie/models/models.dart';
 import 'package:flutter/material.dart';
 
 class MovieSliderScreen extends StatelessWidget {
-  const MovieSliderScreen({Key? key}) : super(key: key);
+  final List<Movie> movies;
+  final String? title;
+  const MovieSliderScreen({Key? key, required this.movies, this.title})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
+    if (movies.isEmpty) {
+      return Container(
+        width: double.infinity,
+        height: size.height * 0.5,
+        child: const Center(child: CircularProgressIndicator()),
+      );
+    }
     return Container(
       width: double.infinity,
       height: size.height * 0.33,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
             child: Text(
-              'Movie Slider',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              title ?? '',
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
           Expanded(
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 20,
+                itemCount: movies.length,
                 itemBuilder: (BuildContext context, int index) =>
-                    const _MoviePoster()),
+                    _MoviePoster(movie: movies[index])),
           ),
         ],
       ),
@@ -34,9 +44,9 @@ class MovieSliderScreen extends StatelessWidget {
 }
 
 class _MoviePoster extends StatelessWidget {
-  const _MoviePoster({
-    Key? key,
-  }) : super(key: key);
+  final Movie movie;
+
+  const _MoviePoster({Key? key, required this.movie}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,17 +63,17 @@ class _MoviePoster extends StatelessWidget {
             },
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: const FadeInImage(
+              child: FadeInImage(
                   width: 150,
                   height: 200,
                   fit: BoxFit.cover,
-                  placeholder: AssetImage('assets/img/no-image.jpg'),
-                  image: NetworkImage('https://picsum.photos/id/1/300/400')),
+                  placeholder: const AssetImage('assets/img/no-image.jpg'),
+                  image: NetworkImage(movie.fullPosterImg)),
             ),
           ),
           const SizedBox(height: 5),
-          const Text(
-            'star wars',
+          Text(
+            movie.title,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
             textAlign: TextAlign.center,

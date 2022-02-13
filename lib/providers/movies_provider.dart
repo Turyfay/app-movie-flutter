@@ -12,9 +12,8 @@ class MoviesProvider extends ChangeNotifier {
   List<Movie> onDiplayPopularmovies = [];
 
   MoviesProvider() {
-    print('MoviesProvider init');
     getOnDisplayMovies();
-    getOnDisplayMovies();
+    getPopularMovies();
   }
 
   getOnDisplayMovies() async {
@@ -41,6 +40,7 @@ class MoviesProvider extends ChangeNotifier {
       ...onDiplayPopularmovies,
       ...moviesPopularResponse.results
     ];
+    print(onDiplayPopularmovies);
     notifyListeners();
   }
 }
