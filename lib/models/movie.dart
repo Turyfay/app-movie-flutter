@@ -35,7 +35,7 @@ class Movie {
 
   get fullPosterImg {
     if (posterPath != null) {
-      return 'https://image.tmdb.org/t/p/w500/$posterPath';
+      return 'https://image.tmdb.org/t/p/w300/$posterPath';
     } else {
       return 'https://www.pngitem.com/pimgs/m/9-948894_no-image-available-icon-png-transparent-png.png';
     }
