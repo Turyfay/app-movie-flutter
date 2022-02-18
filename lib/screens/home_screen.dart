@@ -1,3 +1,4 @@
+import 'package:app_movie/models/serach_delegate.dart';
 import 'package:app_movie/providers/movies_provider.dart';
 import 'package:app_movie/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
-            onPressed: () {},
+            onPressed: () => showSearch(context: context, delegate: MovieSearchDelegate()),
           ),
           IconButton(
             icon: const Icon(Icons.more_vert),
