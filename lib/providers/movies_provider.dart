@@ -10,6 +10,10 @@ class MoviesProvider extends ChangeNotifier {
   List<Movie> onDiplaymovies = [];
   List<Movie> onDiplayPopularmovies = [];
   int _popularPage = 0;
+
+  Map<int,List<Cast>> moviesCast = {};
+
+
   MoviesProvider() {
     getOnDisplayMovies();
     getPopularMovies();
@@ -42,4 +46,18 @@ class MoviesProvider extends ChangeNotifier {
     ];
     notifyListeners();
   }
+
+  Future<List<Cast>> getMovieCast(int movieId) async{
+    //TODO: revisa el mapa
+    print('Obteniendo cast de la movie');
+     final creditsResponse = CreditsResponse.fromJson(
+        await _getJsonData('/3/movie/$movieId/credits'));
+      moviesCast[movieId]=creditsResponse.cast;
+      
+      return creditsResponse.cast;
+
+
+  }
+
+
 }
