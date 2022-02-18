@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CastingCard extends StatelessWidget {
-  const CastingCard({Key? key}) : super(key: key);
+
+  final int movieID;
+
+
+  const CastingCard({Key? key, required this.movieID}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
