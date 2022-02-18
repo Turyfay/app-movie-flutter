@@ -61,7 +61,8 @@ class Cast {
     if (profilePath != null) {
       return 'https://image.tmdb.org/t/p/w300/$profilePath';
     } else {
-      return 'https://www.pngitem.com/pimgs/m/9-948894_no-image-available-icon-png-transparent-png.png';
+      return 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png';
+
     }
   }
 
