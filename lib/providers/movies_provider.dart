@@ -61,7 +61,7 @@ class MoviesProvider extends ChangeNotifier {
   }
 
   Future<List<Movie>> searchMovies (String query) async{
-    final url = Uri.https(_baseUrl, '/search/movie', {
+    final url = Uri.https(_baseUrl, '/3/search/movie', {
       'api_key': _apiKey,
       'language': _language,
       'query':query

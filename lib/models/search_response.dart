@@ -15,6 +15,8 @@ class SearchResponse {
     int totalPages;
     int totalResults;
 
+    
+
     factory SearchResponse.fromJson(String str) => SearchResponse.fromMap(json.decode(str));
 
     factory SearchResponse.fromMap(Map<String, dynamic> json) => SearchResponse(
