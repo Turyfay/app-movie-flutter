@@ -44,7 +44,7 @@ class Movie {
   }
 
   get fullBackdropPathImg {
-    if (posterPath != null) {
+    if (backdropPath != null) {
       return 'https://image.tmdb.org/t/p/w500/$backdropPath';
     } else {
       return 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png';
